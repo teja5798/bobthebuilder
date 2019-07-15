@@ -1,0 +1,79 @@
+<!-- Design a HTML page to accept employee details for raising tickets. -->
+<!-- Making use of external JS and CSS -->
+<!-- Author Name: IGATE -->
+<!-- Version: 1.0 -->
+<!-- Last Modified Date: 20-Nov-2015 -->
+
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<TITLE>Ticket Registration Page</TITLE>
+		<SCRIPT src="raiseTicket.js"></SCRIPT>
+		<link rel="stylesheet" type="text/css" href="raiseTicket.css"/>
+	</HEAD>
+	
+	<BODY>
+	<DIV>
+		<FORM name="frm" onsubmit="return validate()">
+			<TABLE border="1">
+			<CAPTION>Enter details to Raise Ticket</CAPTION>
+				<TR>
+					<TD><label for="Employee Id"> Employee Id: </label></TD>
+					<TD><input name="txtEmpCode" placeholder="Enter Numbers Only" required pattern="[1-9][0-9]{5}" title="Employee Id - 123456" autofocus/></TD>
+				</TR>
+				
+				<TR>
+					<TD><label for="Employee Name"> Employee Name: </label></TD>
+					<TD><input name="txtEmpName" placeholder="Enter Alphabets Only" required pattern="[A-Za-z]{5,25}" title="Employee Name - Joseph"/></TD>
+				</TR>
+				<TR>
+					<TD><label for="Selecting Functions"> Function: </label></TD>
+					<TD>
+							<select name="txtFunctionNames" required onchange="populateCategories()">
+								<option value="">--Select Function--</option>
+								<option value="IT Infrastructure Mgmt">IT Infrastructure Mgmt</option>
+								<option value="Admin">Admin</option>
+								<option value="Travel and Transport">Travel and Transport</option>
+							</select>
+					</TD>
+				</TR>
+				<!-- Category drop down list is populated based on the function selected-->
+				<TR>
+					<TD><label for="Selecting Category"> Category: </label></TD>
+					<TD><select name="txtCategories" id="txtCategories" required>
+								<option value="">--Select Category--</option>
+							</select>
+					</TD>
+				</TR>
+				<TR>
+					<TD><label for="Choosing Priority"> Priority: </label></TD>
+					<TD><input type="radio" name="txtPriority" value="High" />High
+							<input type="radio" name="txtPriority" value="Medium" required/>Medium
+							<input type="radio" name="txtPriority" value="Low" />Low
+					</TD>
+				</TR>
+				<TR>
+					<TD><label for="Writing query"> Description: </label></TD>
+					<TD><textarea name="txtDesc" required></textarea></TD>
+				</TR>
+				<TR>
+					<TD><label for="Raised Date"> Ticket Raised date: </label></TD>
+					<TD><input type="date" name="txtRaisedDate" required/></TD>
+				</TR>
+				<TR>
+					<TD><label for="Mobile Number"> Mobile Number: </label></TD>
+					<TD><input name="txtMobileNum" placeholder="Enter Numbers Only" required pattern="[9][0-9]{9}" title="Mobile Number - 9876529810"/></TD>
+				</TR>
+				<TR>
+					<TD><label for="Multiple Users"> Multiple Users/systems impacted: </label></TD>
+					<TD><input type="checkbox" name="remember" id="remember" value="Multiple Users/systems impacted"/></TD>
+				</TR>
+				<TR>
+					<TD colspan="2" align="center"><input type="submit" name="submit" value="Raise Ticket" />
+					<input type="reset" name="reset" value="Clear" /></TD>
+				</TR>
+			</TABLE>
+		</FORM>
+	</DIV>
+	</BODY>
+</HTML>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="empCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:integer">
+				<xs:pattern value="[0-9]{6}" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<!-- Creating element Function with values only (IT Infrastructure Mgmt, 
+		Admin, Travel and Transport) -->
+	<xs:element name="function">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="IT Infrastructure Mgmt" />
+				<xs:enumeration value="Admin" />
+				<xs:enumeration value="Travel and Transport" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<!-- Creating element Category -->
+	<xs:element name="category" type="xs:string" />
+
+	<!-- Creating element Description -->
+	<xs:element name="description" type="xs:string" />
+
+	<!-- Creating element Raised Date -->
+	<xs:element name="raisedDate" type="xs:date" />
+
+	<!-- Creating element Status with values only (Pending, In Progress and 
+		Solved) -->
+	<xs:element name="status">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="Pending" />
+				<xs:enumeration value="In Progress" />
+				<xs:enumeration value="Solved" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<!-- Designing ticketDetail element and using ref to associate the child 
+		elements -->
+	<xs:element name="ticketDetail">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="empCode" />
+				<xs:element ref="function" />
+				<xs:element ref="category" />
+				<xs:element ref="description" />
+				<xs:element ref="raisedDate" />
+				<xs:element ref="status" />
+			</xs:sequence>
+			<xs:attribute name="ticketCode" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:pattern value="[0-9]{5}" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Designing root element and using ref to associate the child element 
+		, with max Occurs attribute -->
+	<xs:element name="ticketDetails">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ticketDetail" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ticketDetails xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ticket.xsd">
+	<ticketDetail ticketCode="10000">
+		<empCode>824177</empCode>
+		<function>IT Infrastructure Mgmt</function>
+		<category>Asset Allocation</category>
+		<description>Need laptop for training</description>
+		<raisedDate>2015-11-19</raisedDate>
+		<status>Pending</status>
+	</ticketDetail>
+</ticketDetails>

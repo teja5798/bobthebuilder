@@ -1,0 +1,51 @@
+/*********************************************************************
+ * File                 		: raiseTicket.css
+ * Author Name    		: IGATE
+ * Desc                		: External CSS file for styling.
+ * Version              		: 1.0
+ * Last Modified Date   : 20-Nov-2015
+ * Change Description  : Description about the changes implemented
+ *********************************************************************/
+body {
+	background-color:lavender;
+	font-size:1.2em;
+	font-weight:bold;
+	font-family:Helvetica;
+	color:black;
+}
+div{
+	position:absolute;
+	top:30px;
+	left:250px;
+	
+}
+
+input[type] {
+	-webkit-border-radius: 28;
+	border-radius: 28px;
+	color: black;
+	font-size: 18px;
+	padding: 10px 5px 10px 5px;
+}
+
+table {
+	text-align:justify;
+	color:navy;
+	margin:0px;
+	padding:0px;
+	width:100%;
+	box-shadow: 10px 10px 5px #888888;
+	border:1px solid #000000;
+	-webkit-border-bottom-left-radius:0px;
+	border-bottom-left-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	border-top-right-radius:0px;
+	-webkit-border-top-left-radius:0px;
+	border-top-left-radius:0px;
+}
+
+td{
+	padding:7px;
+}

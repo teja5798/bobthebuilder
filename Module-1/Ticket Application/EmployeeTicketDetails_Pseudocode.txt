@@ -1,0 +1,88 @@
+/*********************************************************************
+ * File                  : EmployeeTicketDetails.txt
+ * Author Name     : IGATE
+ * Desc                : Program to count number of tickets raised by an employee.
+ * Version             : 1.0
+ * Last Modified Date   : 19-Nov-2015
+ * Change Description  : Description about the changes implemented
+ *********************************************************************/
+
+BEGIN
+
+	//ticketCount is used to store number of tickets raised by an employee
+	DECLARE ticketCount AS INTEGER
+	//empId is accepted from the user
+	DECLARE empId AS INTEGER
+	
+	PROMPT "Enter the EmployeeId" AND STORE IN empId
+			// checking if empId contains only digits
+			IF isValid(empId) THEN
+				ticketCount=findNoOfTicketsRaised(empId)
+				PRINT "Number of Tickets raised :" , ticketCount
+			ELSE
+				PRINT "Invalid Employee Id entered :" , empId		
+			END IF
+END
+
+/*********************************************************************
+* Module Name         :   findNoOfTicketsRaised()
+* Input Parameters    :  empId
+* Return Type           :  INTEGER
+* Author                   :  IGATE
+* Creation Date         : 19-Nov-2015
+* Description         	: Finding number of tickets raised by an employee
+ *********************************************************************/
+ 
+SUB findNoOfTicketsRaised(empId)
+	DECLARE count AS INTEGER
+	DECLARE file AS FILE
+	DECLARE fileData AS CHAR
+	
+	//take filename from user
+	PROMPT "enter the filename :" AND STORE IN file
+	
+	//check if file exists or not
+	IF(fileExists(file)) THEN
+		OPEN file
+		
+		READ data from the file AND STORE IN fileData
+		
+		WHILE (fileData)
+		DO
+			// checking if user entered employee ID is equal to empId existing in file
+			IF (empId==fileData.empId) THEN
+				// counting only those tickets whose status is 'Pending' or 'In Progress'
+				IF (fileData.status=='Pending' || fileData.status=='In Progress') THEN
+					count = count + 1;
+				END IF;
+			ELSE
+				READ data from the file AND STORE IN fileData
+				CYCLE
+			END IF
+		READ data from the file AND STORE IN fileData
+		END WHILE
+		
+	END IF
+	
+	EXCEPTION
+				WHEN no such file exists THEN
+							PRINT errormessage
+	RETURN count
+END SUB
+	
+*********************************************************************
+* Module Name         : isValid(empId)
+* Input Parameters    : empId
+* Return Type         : BOOLEAN
+* Author              : IGATE
+* Creation Date       : 8-DEC-2015
+* Description         : validate the empId.
+ *********************************************************************/
+
+SUB isValid(empId)
+	IF isDigit(empId) THEN
+		RETURN true
+	ELSE 
+		RETURN false
+	END IF
+END SUB
